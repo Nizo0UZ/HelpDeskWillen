@@ -77,7 +77,6 @@ export interface ResultadoBuscaTexto {
     id: number;
     score: number;
     documento: { titulo: string; descricao: string; status?: StatusChamado; categoriaNome?: string };
-    highlight: { titulo?: string[]; descricao?: string[]; solucao?: string[] };
   }[];
 }
 
@@ -87,7 +86,6 @@ export interface ResultadoBuscaSemantica {
     id: number;
     similaridade: number;
     chamado: { id: number; titulo: string; descricao: string; status: StatusChamado; categoriaNome: string } | null;
-    artigo: { id: number; titulo: string; conteudo: string; categoriaNome: string } | null;
   }[];
 }
 

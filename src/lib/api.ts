@@ -1,5 +1,6 @@
-// Cliente HTTP mínimo. As chamadas vão para "/api/*", que o Next.js
-// redireciona para o backend Express (ver rewrites em next.config.ts).
+// Cliente HTTP mínimo consumindo diretamente a API do backend Express.
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000";
 
 interface ErroApi {
   erro?: string;
@@ -7,7 +8,7 @@ interface ErroApi {
 }
 
 export async function api<T>(caminho: string, opcoes: RequestInit = {}): Promise<T> {
-  const resposta = await fetch(`/api${caminho}`, {
+  const resposta = await fetch(`${API_URL}${caminho}`, {
     ...opcoes,
     headers: { "Content-Type": "application/json", ...opcoes.headers },
   });
